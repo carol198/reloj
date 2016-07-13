@@ -1,21 +1,54 @@
-$(document).ready(function() {
-setInterval( function() {
+//obtiene la hora del pc
+function hora(){
 	
-	var minutos = new Date().getMinutes();
+	setInterval( function() {
+		
+		var minutos = new Date().getMinutes();
+		
+		$(".m").html(( minutos < 10 ? "0" : "" ) + minutos);
+	    },1000);
+		
+	setInterval( function() {
+		
+		var horas = new Date().getHours();
+		
+		$(".h").html(( horas < 10 ? "0" : "" ) + horas);
+	    }, 1000);	
 	
-	$("#m").html(( minutos < 10 ? "0" : "" ) + minutos);
-    },1000);
-	
-setInterval( function() {
-	
-	var horas = new Date().getHours();
-	
-	$("#h").html(( horas < 10 ? "0" : "" ) + horas);
-    }, 1000);	
+}
+$(document).ready(function(){
+		hora();
+		var nuevahora=$(".clock").clone();
+		$(".listas").html(nuevahora);
 });
+////hora chic	
 
-/*$(document).ready(function()){
-	var nuevahora = new Date().getHours();
-	$("#h").html((nuevahora == horas-6)+horas);
-},1000);
-});*/
+function horaChicago(){
+	
+	setInterval( function() {
+		
+		var minutos = new Date().getMinutes();
+		
+		$(".m").html(( minutos < 10 ? "0" : "" ) + minutos);
+	    },1000);
+		
+	setInterval( function() {
+		
+		var horas = new Date().getHours();
+		
+		$(".h").html((parseInt( horas < 10 ? "0" : "" ) + horas)+3);
+	    }, 1000);	
+	
+}
+
+$(document).ready(function(){
+		$("#chicago").click(function(){
+			var nuevahora=$(".clock").clone();
+			
+			$(".listas").html(nuevahora);
+			horaChicago();
+			
+		})
+		/*var nuevahora=$("").clone();
+		$(".listas").html(nuevahora);*/
+});
